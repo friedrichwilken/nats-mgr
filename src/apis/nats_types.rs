@@ -8,14 +8,12 @@ use serde::{Deserialize, Serialize};
 #[kube(status = "NatsStatus", shortname = "nmgr")]
 #[allow(non_snake_case)]
 pub struct NatsSpec {
-    #[serde(default = "defaults::default_cluster")]
     pub cluster: Cluster,
 }
 
 #[derive(Deserialize, Serialize, Clone, Debug, JsonSchema, Default)]
 #[allow(non_snake_case)]
 pub struct Cluster {
-    #[serde(default = "defaults::default_cluter_size")]
     pub size: i32
 }
 
