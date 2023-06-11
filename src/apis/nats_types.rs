@@ -4,7 +4,7 @@ use serde::{Deserialize, Serialize};
 
 #[derive(CustomResource, Deserialize, Serialize, Clone, Debug, JsonSchema)]
 #[cfg_attr(test, derive(Default))]
-#[kube(kind = "nats-mgr", group = "nats.grp", version = "v1alpha1", namespaced)]
+#[kube(kind = "Nats", group = "nats.grp", version = "v1alpha1", namespaced)]
 #[kube(status = "NatsStatus", shortname = "nmgr")]
 #[allow(non_snake_case)]
 pub struct NatsSpec {
