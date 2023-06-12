@@ -1,0 +1,50 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: natses.nats.grp
+spec:
+  group: nats.grp
+  names:
+    categories: []
+    kind: Nats
+    plural: natses
+    shortNames:
+    - nmgr
+    singular: nats
+  scope: Namespaced
+  versions:
+  - additionalPrinterColumns: []
+    name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: Auto-generated derived type for NatsSpec via `CustomResource`
+        properties:
+          spec:
+            properties:
+              cluster:
+                properties:
+                  size:
+                    format: int32
+                    type: integer
+                required:
+                - size
+                type: object
+            required:
+            - cluster
+            type: object
+          status:
+            nullable: true
+            properties:
+              running:
+                type: boolean
+            required:
+            - running
+            type: object
+        required:
+        - spec
+        title: Nats
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
