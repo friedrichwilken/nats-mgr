@@ -22,15 +22,14 @@ spec:
           spec:
             properties:
               cluster:
+                default:
+                  size: 3
                 properties:
                   size:
+                    default: 3
                     format: int32
                     type: integer
-                required:
-                - size
                 type: object
-            required:
-            - cluster
             type: object
           status:
             nullable: true
