@@ -21,7 +21,7 @@ jobs:
       run: cargo build --bin crdgen --verbose
     
     - uses: nolar/setup-k3d-k3s@v1
-        with:
-          version: v1.26.5
+      with:
+        version: v1.26.5
     
     - run:  kubectl apply -f ckubectl apply -f charts/nats/templates/natscrd.yaml
