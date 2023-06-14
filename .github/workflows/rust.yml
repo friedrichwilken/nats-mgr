@@ -16,12 +16,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-
-    - name: Build crdgen
-      run: cargo build --bin crdgen --verbose
-    
+    - uses: extractions/setup-just@v1
+    - name: genarate crd
+      run: just generate-crd
     - uses: nolar/setup-k3d-k3s@v1
       with:
         version: v1.26.5
-    
-    - run:  kubectl apply -f ckubectl apply -f charts/nats/templates/natscrd.yaml
+    - name: install crd
+      run: just install-crd
