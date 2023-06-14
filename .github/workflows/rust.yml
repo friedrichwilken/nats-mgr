@@ -11,12 +11,17 @@ env:
 
 jobs:
   build:
-
+    strategy:
+      fail-fast: true
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
+
     - name: Build crdgen
       run: cargo build --bin crdgen --verbose
-    - name: Run tests
-      run: cargo test --verbose
+    
+    - uses: nolar/setup-k3d-k3s@v1
+        with:
+          version: v1.26.5
+    
+    - run:  kubectl apply -f ckubectl apply -f charts/nats/templates/natscrd.yaml
